@@ -25,6 +25,17 @@ router.get('/todos', (req, res, next) => {
       })
   });
 
+router.post('/edit', (req, res, next) => {
+  id = req.body.id
+  text = req.body.text
+  title = req.body.title
+  ToDoSchema.findByIdAndUpdate(id, {title: title, text: text }).then(edit_todo => {
+    if (edit_todo) {
+        res.json({status: 200});
+    }
+  })
+})
+
 router.post('/delete', (req, res, next) => {
   let id = req.body.id
   ToDoSchema.findById(id).deleteOne().then(     

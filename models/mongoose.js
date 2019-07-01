@@ -1,7 +1,9 @@
 const mongoose = require('mongoose')
 const config = require('../config.js');
 // debugger
-const db = mongoose.connect(config.mongo.url, { useNewUrlParser: true })
+
+mongoose.set('useFindAndModify', false);
+mongoose.connect(config.mongo.url, { useNewUrlParser: true })
 
 // db.on('error', function(err){
 //   // debugger
